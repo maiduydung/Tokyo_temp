@@ -17,6 +17,7 @@ def load_model():
     global model
     with open('model_tokyo_temp.pkl','rb') as f:
         model = pickle.load(f)
+    print('MODEL LOADED')
 
 @app.route("/")
 def hello():
@@ -29,6 +30,7 @@ def print_text(text):
 def predict():
     if request.method == 'GET':
         results = model.fit()
+        print(results)
         y_pred = results.predict(end=1300)
         index = pd.date_range(start='13/6/2018',periods=1301)
         y_pred.index = index
