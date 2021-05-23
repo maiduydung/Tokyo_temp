@@ -4,6 +4,7 @@ import numpy as np
 from flask import Flask, request
 from datetime import date
 
+
 def get_current_date():
     today = date.today()
     d = today.strftime("%Y-%m-%d")
@@ -40,4 +41,4 @@ def predict():
 
 if __name__ == "__main__":
     load_model()
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=80,debug=True)
