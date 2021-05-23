@@ -22,6 +22,8 @@ def load_model():
 def hello():
     return "hello world"
 
+def print_text(text):
+    return text
 
 @app.route("/predict",methods=['POST','GET'])
 def predict():
@@ -31,7 +33,7 @@ def predict():
         index = pd.date_range(start='13/6/2018',periods=1301)
         y_pred.index = index
         curr_date = get_current_date()
-    return "Current date " + str(curr_date)+ "Mean temperature " + str(y_pred[curr_date])
+    return "Current date " + str(curr_date)+ " Mean temperature " + str(round(y_pred[curr_date],2)) + " Celsius"
     
 
 if __name__ == "__main__":
